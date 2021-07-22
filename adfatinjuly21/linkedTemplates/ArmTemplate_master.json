@@ -1,0 +1,70 @@
+{
+	"$schema": "http://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+	"contentVersion": "1.0.0.0",
+	"parameters": {
+		"factoryName": {
+			"type": "string",
+			"metadata": "Data Factory name",
+			"defaultValue": "adfatinjuly21"
+		},
+		"lsInput_adls_accountKey": {
+			"type": "secureString",
+			"metadata": "Secure string for 'accountKey' of 'lsInput_adls'"
+		},
+		"lsout_sql_connectionString": {
+			"type": "secureString",
+			"metadata": "Secure string for 'connectionString' of 'lsout_sql'"
+		},
+		"lsInput_adls_properties_typeProperties_url": {
+			"type": "string",
+			"defaultValue": "https://adlsatinjuly21.dfs.core.windows.net"
+		},
+		"trigger3_properties_typeProperties_scope": {
+			"type": "string",
+			"defaultValue": "/subscriptions/a41112e8-e219-4b72-b0fa-b86a6ea338e5/resourceGroups/rgJuly21/providers/Microsoft.Storage/storageAccounts/adlsatinjuly21"
+		},
+		"containerUri": {
+			"type": "string",
+			"metadata": "URI to storage account containing linked ARM templates"
+		},
+		"containerSasToken": {
+			"type": "string",
+			"metadata": "Sas token to storage account containing linked ARM templates"
+		}
+	},
+	"variables": {
+		"factoryId": "[concat('Microsoft.DataFactory/factories/', parameters('factoryName'))]"
+	},
+	"resources": [
+		{
+			"name": "adfatinjuly21_ArmTemplate_0",
+			"type": "Microsoft.Resources/deployments",
+			"apiVersion": "2018-02-01",
+			"properties": {
+				"mode": "incremental",
+				"templateLink": {
+					"uri": "[concat(parameters('containerUri'), '/ArmTemplate_0.json', parameters('containerSasToken'))]",
+					"contentVersion": "1.0.0.0"
+				},
+				"parameters": {
+					"factoryName": {
+						"value": "[parameters('factoryName')]"
+					},
+					"lsInput_adls_accountKey": {
+						"value": "[parameters('lsInput_adls_accountKey')]"
+					},
+					"lsout_sql_connectionString": {
+						"value": "[parameters('lsout_sql_connectionString')]"
+					},
+					"lsInput_adls_properties_typeProperties_url": {
+						"value": "[parameters('lsInput_adls_properties_typeProperties_url')]"
+					},
+					"trigger3_properties_typeProperties_scope": {
+						"value": "[parameters('trigger3_properties_typeProperties_scope')]"
+					}
+				}
+			},
+			"dependsOn": []
+		}
+	]
+}

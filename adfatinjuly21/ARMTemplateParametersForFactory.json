@@ -1,0 +1,21 @@
+{
+	"$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentParameters.json#",
+	"contentVersion": "1.0.0.0",
+	"parameters": {
+		"factoryName": {
+			"value": "adfatinjuly21"
+		},
+		"lsInput_adls_accountKey": {
+			"value": ""
+		},
+		"lsout_sql_connectionString": {
+			"value": ""
+		},
+		"lsInput_adls_properties_typeProperties_url": {
+			"value": "https://adlsatinjuly21.dfs.core.windows.net"
+		},
+		"trigger3_properties_typeProperties_scope": {
+			"value": "/subscriptions/a41112e8-e219-4b72-b0fa-b86a6ea338e5/resourceGroups/rgJuly21/providers/Microsoft.Storage/storageAccounts/adlsatinjuly21"
+		}
+	}
+}
