@@ -2,16 +2,16 @@
 	"name": "inputCSV",
 	"properties": {
 		"linkedServiceName": {
-			"referenceName": "lsStorage",
+			"referenceName": "lsInput_adls",
 			"type": "LinkedServiceReference"
 		},
 		"annotations": [],
 		"type": "DelimitedText",
 		"typeProperties": {
 			"location": {
-				"type": "AzureBlobStorageLocation",
+				"type": "AzureBlobFSLocation",
 				"fileName": "cars.csv",
-				"container": "input"
+				"fileSystem": "input"
 			},
 			"columnDelimiter": ",",
 			"escapeChar": "\\",

@@ -1,8 +1,8 @@
 {
-	"name": "outTable",
+	"name": "outSQL",
 	"properties": {
 		"linkedServiceName": {
-			"referenceName": "lsSQL",
+			"referenceName": "lsout_sql",
 			"type": "LinkedServiceReference"
 		},
 		"annotations": [],

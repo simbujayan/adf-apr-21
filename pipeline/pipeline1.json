@@ -3,7 +3,7 @@
 	"properties": {
 		"activities": [
 			{
-				"name": "Copy data2",
+				"name": "Copy data1",
 				"type": "Copy",
 				"dependsOn": [],
 				"policy": {
@@ -18,7 +18,7 @@
 					"source": {
 						"type": "DelimitedTextSource",
 						"storeSettings": {
-							"type": "AzureBlobStorageReadSettings",
+							"type": "AzureBlobFSReadSettings",
 							"recursive": true,
 							"enablePartitionDiscovery": false
 						},
@@ -27,7 +27,8 @@
 						}
 					},
 					"sink": {
-						"type": "AzureSqlSink"
+						"type": "AzureSqlSink",
+						"writeBehavior": "insert"
 					},
 					"enableStaging": false,
 					"translator": {
@@ -47,7 +48,7 @@
 				],
 				"outputs": [
 					{
-						"referenceName": "outTable",
+						"referenceName": "outSQL",
 						"type": "DatasetReference"
 					}
 				]
