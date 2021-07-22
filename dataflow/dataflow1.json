@@ -24,9 +24,12 @@
 			"transformations": [
 				{
 					"name": "YearTitleExtraction"
+				},
+				{
+					"name": "Select1"
 				}
 			],
-			"script": "source(output(\n\t\tmovieId as string,\n\t\ttitle as string,\n\t\tgenres as string\n\t),\n\tallowSchemaDrift: true,\n\tvalidateSchema: false,\n\tignoreNoFilesFound: false) ~> source1\nsource1 derive(Year = toInteger(trim(right(title, 6), '()')),\n\t\tTitle = toString(left(title, length(title)-6))) ~> YearTitleExtraction\nYearTitleExtraction sink(allowSchemaDrift: true,\n\tvalidateSchema: false,\n\tskipDuplicateMapInputs: true,\n\tskipDuplicateMapOutputs: true,\n\tpartitionBy('hash', 1)) ~> sink1"
+			"script": "source(output(\n\t\tmovieId as string,\n\t\ttitle as string,\n\t\tgenres as string\n\t),\n\tallowSchemaDrift: true,\n\tvalidateSchema: false,\n\tignoreNoFilesFound: false) ~> source1\nsource1 derive(Year = toInteger(trim(right(title, 6), '()')),\n\t\tTitle = toString(left(title, length(title)-6))) ~> YearTitleExtraction\nYearTitleExtraction select(mapColumn(\n\t\tmovieId,\n\t\tgenres,\n\t\tYear,\n\t\tTitle = YearTitleExtraction@Title\n\t),\n\tskipDuplicateMapInputs: true,\n\tskipDuplicateMapOutputs: true) ~> Select1\nSelect1 sink(allowSchemaDrift: true,\n\tvalidateSchema: false,\n\tskipDuplicateMapInputs: true,\n\tskipDuplicateMapOutputs: true,\n\tpartitionBy('hash', 1)) ~> sink1"
 		}
 	}
 }
