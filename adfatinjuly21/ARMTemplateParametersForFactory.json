@@ -16,6 +16,9 @@
 		},
 		"trigger3_properties_typeProperties_scope": {
 			"value": "/subscriptions/a41112e8-e219-4b72-b0fa-b86a6ea338e5/resourceGroups/rgJuly21/providers/Microsoft.Storage/storageAccounts/adlsatinjuly21"
+		},
+		"trigger4event_properties_typeProperties_scope": {
+			"value": "/subscriptions/a41112e8-e219-4b72-b0fa-b86a6ea338e5/resourceGroups/rgJuly21/providers/Microsoft.Storage/storageAccounts/adlsatinjuly21"
 		}
 	}
 }
