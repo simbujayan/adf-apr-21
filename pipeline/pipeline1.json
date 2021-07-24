@@ -43,17 +43,34 @@
 				"inputs": [
 					{
 						"referenceName": "inputCSV",
-						"type": "DatasetReference"
+						"type": "DatasetReference",
+						"parameters": {
+							"fileName": {
+								"value": "@pipeline().parameters.fileName",
+								"type": "Expression"
+							}
+						}
 					}
 				],
 				"outputs": [
 					{
 						"referenceName": "outSQL",
-						"type": "DatasetReference"
+						"type": "DatasetReference",
+						"parameters": {
+							"tableName": {
+								"value": "@pipeline().parameters.fileName",
+								"type": "Expression"
+							}
+						}
 					}
 				]
 			}
 		],
+		"parameters": {
+			"fileName": {
+				"type": "string"
+			}
+		},
 		"annotations": []
 	}
 }
