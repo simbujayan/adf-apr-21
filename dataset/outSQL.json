@@ -5,6 +5,11 @@
 			"referenceName": "lsout_sql",
 			"type": "LinkedServiceReference"
 		},
+		"parameters": {
+			"tableName": {
+				"type": "string"
+			}
+		},
 		"annotations": [],
 		"type": "AzureSqlTable",
 		"schema": [
@@ -37,7 +42,7 @@
 		],
 		"typeProperties": {
 			"schema": "dbo",
-			"table": "Cars"
+			"table": ""
 		}
 	}
 }
