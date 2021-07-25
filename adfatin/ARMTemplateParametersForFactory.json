@@ -1,0 +1,24 @@
+{
+	"$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentParameters.json#",
+	"contentVersion": "1.0.0.0",
+	"parameters": {
+		"factoryName": {
+			"value": "adfatin"
+		},
+		"lsInput_adls_accountKey": {
+			"value": ""
+		},
+		"lsout_sql_connectionString": {
+			"value": ""
+		},
+		"lsInput_adls_properties_typeProperties_url": {
+			"value": "https://adlsatingjuly21.dfs.core.windows.net"
+		},
+		"triggerEvents_properties_pipeline1_parameters_fileName": {
+			"value": "@triggerBody().fileName"
+		},
+		"triggerEvents_properties_typeProperties_scope": {
+			"value": "/subscriptions/31f07e1d-7689-4b8a-8f2b-0987a21a988d/resourceGroups/rgJuly21/providers/Microsoft.Storage/storageAccounts/saatinjuly21"
+		}
+	}
+}
