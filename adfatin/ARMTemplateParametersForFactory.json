@@ -18,7 +18,7 @@
 			"value": "@triggerBody().fileName"
 		},
 		"triggerEvents_properties_typeProperties_scope": {
-			"value": "/subscriptions/31f07e1d-7689-4b8a-8f2b-0987a21a988d/resourceGroups/rgJuly21/providers/Microsoft.Storage/storageAccounts/saatinjuly21"
+			"value": "/subscriptions/31f07e1d-7689-4b8a-8f2b-0987a21a988d/resourceGroups/rgJuly21/providers/Microsoft.Storage/storageAccounts/adlsatingjuly21"
 		}
 	}
 }
