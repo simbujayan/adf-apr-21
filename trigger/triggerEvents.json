@@ -1,0 +1,18 @@
+{
+	"name": "triggerEvents",
+	"properties": {
+		"annotations": [],
+		"runtimeState": "Stopped",
+		"pipelines": [],
+		"type": "BlobEventsTrigger",
+		"typeProperties": {
+			"blobPathBeginsWith": "/input/blobs/",
+			"blobPathEndsWith": ".csv",
+			"ignoreEmptyBlobs": true,
+			"scope": "/subscriptions/31f07e1d-7689-4b8a-8f2b-0987a21a988d/resourceGroups/rgJuly21/providers/Microsoft.Storage/storageAccounts/saatinjuly21",
+			"events": [
+				"Microsoft.Storage.BlobCreated"
+			]
+		}
+	}
+}
