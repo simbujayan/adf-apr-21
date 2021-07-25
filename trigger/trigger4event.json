@@ -16,7 +16,7 @@
 			"blobPathBeginsWith": "/input/blobs/",
 			"blobPathEndsWith": ".csv",
 			"ignoreEmptyBlobs": true,
-			"scope": "/subscriptions/a41112e8-e219-4b72-b0fa-b86a6ea338e5/resourceGroups/rgJuly21/providers/Microsoft.Storage/storageAccounts/adlsatinjuly21",
+			"scope": "/subscriptions/31f07e1d-7689-4b8a-8f2b-0987a21a988d/resourceGroups/rgJuly21/providers/Microsoft.Storage/storageAccounts/adlsatingjuly21",
 			"events": [
 				"Microsoft.Storage.BlobCreated"
 			]
