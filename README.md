@@ -314,7 +314,6 @@ Information<br/>
 - Specify Body - Dynamic Content and specify variable - "Email Body" we created earlier
 - Save Logic App
 - Copy HTTP URL of Logic APP
-- 
 - Create a Pipeline - MASTER
 - Add activity - Execute Pipeline
 - Settings
