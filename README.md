@@ -142,7 +142,7 @@ Password: <Password of VM>
 1. Connect activity with dataset and add new Field in the activity - Child items
 1. Publish and Run pipeline
 1.  Inspect the output JSON
-1. Add a foreach activity
+1. Add a foreach activity named - For Each Table
 1. In Setting\Items Add dynamic content and put below expression:
 ```
 @activity('Get Metadata1').output.childitems
@@ -210,9 +210,9 @@ Script Name:
          - Select DataSource
          - Change to Query radio button
          - Paste below query
-         ```
-	  SELECT * FROM adflookupdemo.INFORMATION_SCHEMA.TABLES WHERE TABLE_TYPE = 'BASE TABLE'
-         ```
+	 ```
+	 SELECT * FROM adflookupdemo.INFORMATION_SCHEMA.TABLES WHERE TABLE_TYPE = 'BASE TABLE'
+	 ```
 	 - Deselect Checkbox - First Row Only
 	 - Click - Preview Data
     - Create activity in Pipeline - ForEach and connect with previous activity
@@ -253,4 +253,23 @@ Script Name:
    ```
    - Use parameter in Connection Tab - File path - file
    - Add Copy activity to Pipeline inside Foreach
-   - 
+   ```
+   Name: Export Table
+   ```
+   - Configure Source of Copy Activity
+      - Select Source Dataset
+      - TableName
+      ```
+      @item().table_name
+      ```
+      - SchemaName
+      ```
+      @item().table_schema
+      ```
+   - Configure Sink of Copy Activity
+   - Select Sink Dataset - CSVTable
+   - FileName
+   ```
+   @concat(item().table_schema, '_', item().table_name, '.csv')
+   ```
+   
