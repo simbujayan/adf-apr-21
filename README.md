@@ -267,8 +267,8 @@ Script Name:
       @item().table_schema
       ```
    - Configure Sink of Copy Activity
-   - Select Sink Dataset - CSVTable
-   - FileName
+      - Select Sink Dataset - CSVTable
+      - FileName
    ```
    @concat(item().table_schema, '_', item().table_name, '.csv')
    ```
