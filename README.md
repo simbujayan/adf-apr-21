@@ -273,3 +273,83 @@ Script Name:
    @concat(item().table_schema, '_', item().table_name, '.csv')
    ```
    
+## 9-Custom Email Notifications
+- Create Logic App of HTTP Trigger
+- Generate Schema using below Sample Payload
+```
+{
+    "title": "",
+    "message": "",
+    "color": "",
+    "dataFactoryName": "",
+    "pipelineName": "",
+    "pipelineRunId": "",
+    "time": ""
+}
+```
+- Add New Step - Outlook.com
+- Action: Send an email (V2)
+- Sign In to Outlook.com
+- Specify To: <YourEmailID>
+- Specify Subject - Dynamic Content
+```
+title
+```
+- Create a Variable named - "Email Body"
+- Put below content (Replace placeholder with dynamic content)
+```
+<hr/>
+<h2 style='color:____color_here____'>____title_here____</h2>
+<hr/>
+Data Factory Name: <b>____name_here____</b><br/>
+Pipeline Name: <b>____name_here____</b><br/>
+Pipeline Run Id: <b>____id_here____</b><br/>
+Time: <b>____time_here____</b><br/>
+<hr/>
+Information<br/>
+<p style='color:____color_here____'>____message_here____</p>
+<hr/>
+<p style='color:gray;'>This email was generated automatically. Please do not respond to it. Contact team at: contact@contoso.com </p>
+```
+- Specify Body - Dynamic Content and specify variable - "Email Body" we created earlier
+- Save Logic App
+- Copy HTTP URL of Logic APP
+- 
+- Create a Pipeline - MASTER
+- Add activity - Execute Pipeline
+- Settings
+```
+Invoked Pipeline: DEMO-PIPELINE
+```
+- Add another activity - Web - Name: Send Success Email
+- Connect it with Success output from previous activity - Execute Pipeline
+- Customize Activity - Send Success Email
+- URL: Logic APP URL
+- Body
+```
+{
+    "title": "@{activity('Execute Pipeline1').output.pipelineName} SUCCEEDED!",
+    "message": "Pipeline run finished successfully!",
+    "color": "Green",
+    "dataFactoryName": "@{pipeline().DataFactory}",
+    "pipelineName": "@{activity('Execute Pipeline1').output.pipelineName}",
+    "pipelineRunId": "@{activity('Execute Pipeline1').output.pipelineRunId}",
+    "time": "@{utcnow()}"
+}
+```
+- Add another activity - Web - Name: Send Failure Email
+- Connect it with Failure output from previous activity - Execute Pipeline
+- Customize Activity - Send Failure Email
+- URL: Logic APP URL
+- Body
+```
+{
+    "title": "@{activity('Execute Pipeline1').output.pipelineName} FAILED!",
+    "message": "Error: @{activity('Execute Pipeline1').error.message}",
+    "color": "Red",
+    "dataFactoryName": "@{pipeline().DataFactory}",
+    "pipelineName": "@{activity('Execute Pipeline1').output.pipelineName}",
+    "pipelineRunId": "@{activity('Execute Pipeline1').output.pipelineRunId}",
+    "time": "@{utcnow()}"
+ }
+```
