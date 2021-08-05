@@ -1,9 +1,0 @@
-{
-	"name": "adfatinjuly21",
-	"location": "centralus",
-	"identity": {
-		"type": "SystemAssigned",
-		"principalId": "57968f66-1a70-474a-9833-83729ea0f221",
-		"tenantId": "3a628678-dc5d-452b-b137-a44e41bd94f7"
-	}
-}
