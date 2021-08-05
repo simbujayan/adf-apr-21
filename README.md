@@ -174,3 +174,83 @@ Password: <Password of VM>
 	
 
 - Refer: pipeline3
+
+## 8-Copy multiple tables in Bulk with Lookup & ForEach
+- Create Storage account
+```
+Name: adflookupdemostorage
+```
+- Create Container
+```
+Name: exported-data
+```
+- Create SQL Database
+```
+Name: adflookupdemo
+```
+- Login to SQL Database
+- Create table using the script
+```
+Script Name: 
+```
+- These tables will be created
+   - dbo.Cars
+   - dbo.Countries
+   - dbo.Movies
+- Steps to perform to create data factory pipeline
+   - List Tables with Lookup
+      - Create SQL Linked Service
+      - Create Dataset to List Tables named - TableList
+      ```
+      SELECT * FROM adflookupdemo.INFORMATION_SCHEMA.TABLES WHERE TABLE_TYPE = 'BASE TABLE'
+      ```
+   - Create Pipeline
+   - Create activity in Pipeline - Lookup. Name it - ListTables
+      - Settings Tab
+         - Select DataSource
+         - Change to Query radio button
+         - Paste below query
+         ```
+	  SELECT * FROM adflookupdemo.INFORMATION_SCHEMA.TABLES WHERE TABLE_TYPE = 'BASE TABLE'
+         ```
+	 - Deselect Checkbox - First Row Only
+	 - Click - Preview Data
+    - Create activity in Pipeline - ForEach and connect with previous activity
+    	- Settings
+    	    - Items - Add Dynamic Content
+    	      ```
+	      @activity('List Tables').output.value
+	      ```
+    - Create New LinkedService to Azure Blob Storage to export output
+    - Create Dataset for input
+    ```
+    Type: Azure SQL
+    Name: SQL Table
+    ```
+    - Specify Parameters of Dataset - SQL Table
+    ```
+    TableName
+    SchemaName
+    ```
+
+    - User TableName parameter inside tab - Connection
+       - Enable Edit Checkbox
+       - Specify Dynamic Schema Name and Table Name
+    
+	     
+    - Create Dataset for output
+    ```
+    Type: Azure Blob Storage - DelimittedText
+    Name: CSVTable
+    File path: exported-data
+    First Row as header: Checked
+    Import Schema: None
+    ```
+    
+   - Specify Parameters of Dataset - CSVTable
+   ```
+   FileName
+   ```
+   - Use parameter in Connection Tab - File path - file
+   - Add Copy activity to Pipeline inside Foreach
+   - 
