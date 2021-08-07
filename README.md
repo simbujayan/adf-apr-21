@@ -388,3 +388,4 @@ Invoked Pipeline: DEMO-PIPELINE
     "time": "@{utcnow()}"
  }
 ```
+- Delete cars.csv from input containter and run the pipeline again. It will send failure email
