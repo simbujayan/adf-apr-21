@@ -323,8 +323,8 @@ Name: dbatinapr21
 ```
 - Add New Step - Outlook.com
 - Action: Send an email (V2)
-- Sign In to Outlook.com
-- Specify To: <YourEmailID>
+- Sign In to Outlook.com using atin.intellipaat@outlook.com
+- Specify To: <YourEmailID> - emample: atin.intellipaat@gmail.com
 - Specify Subject - Dynamic Content
 ```
 title
