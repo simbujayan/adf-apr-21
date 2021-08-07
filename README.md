@@ -6,9 +6,9 @@
 - Create a new Azure Data Factory resource in Azure and specify details of Github URL specified above while creating your Data Factory
 
 ## 1-azure-data-factory-mapping-data-flows-basics (basics branch)
-1. Create blank SQL Database - (dbatinapr21)
+1. Create blank SQL Database - (dbatinaug21)
 ```
-Server Name: sqlsvrapr21.database.windows.net
+Server Name: sqlsvraug21.database.windows.net
 ```
 
 - Note: make sure to enable firewall settings in Networking section to Public Endpoint and Allow Client IP and Azure Services
@@ -25,8 +25,8 @@ CREATE TABLE Cars (
 )
 ```
 
-1. Create a new Data Factory (adfatinapr21)
-1. Create storage account (sadfapr21), create container (input) and upload cars.csv to it
+1. Create a new Data Factory (adfatinaug21)
+1. Create storage account (sadfaug21), create container (input) and upload cars.csv to it
 1. Create linked service to connect to storage account - (lsStorage)
 1. Create linked service to connect to sql server - (lsSQL)
 1. Add dataset to connect to sql table - (outTable)
@@ -122,7 +122,7 @@ C:\ir
 ```
 Integration Runtime: Self Hosted
 Host: C:\ir
-Username: dsvmApr21\atingupta2005
+Username: dsvmaug21\atingupta2005
 Password: <Password of VM>
 ```
 1. Put a cars.csv in C:\ir
