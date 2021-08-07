@@ -252,9 +252,9 @@ Name: dbatinapr21
     - Create activity in Pipeline - ForEach and connect with previous activity
     	- Settings
     	    - Items: Add Dynamic Content
-    	    ```
-	    @activity('List Tables').output.value
-	    ```
+		```
+		@activity('List Tables').output.value
+		```
     - Create New LinkedService to Azure Blob Storage to export output
     - Create Dataset for input - SQLTable
 	    ```
