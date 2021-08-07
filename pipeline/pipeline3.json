@@ -122,7 +122,13 @@
 							"outputs": [
 								{
 									"referenceName": "outTable",
-									"type": "DatasetReference"
+									"type": "DatasetReference",
+									"parameters": {
+										"tableName": {
+											"value": "@variables('fileName')",
+											"type": "Expression"
+										}
+									}
 								}
 							]
 						}
