@@ -87,7 +87,8 @@
 									"type": "DelimitedTextSource",
 									"storeSettings": {
 										"type": "FileServerReadSettings",
-										"fileListPath": {
+										"recursive": true,
+										"wildcardFileName": {
 											"value": "@variables('fileName')",
 											"type": "Expression"
 										},
