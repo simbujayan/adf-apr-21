@@ -27,15 +27,16 @@ CREATE TABLE Cars (
 
 1. Create a new Data Factory (adfatinaug21)
 1. Create storage account (sadfaug21), create container (input) and upload cars.csv to it
-1. Create linked service to connect to storage account - (lsStorage)
-1. Create linked service to connect to sql server - (lsSQL)
-1. Add dataset to connect to sql table - (outTable)
-1. Create dblob dataset to connect to cars.csv	- (inputCSV)
-1. Create pipeline
-1. Add copy data activity to the pipeline
-1. Configure copy data activity
-1. Run pipeline
-1. Verify data is there in the cars table
+    - https://raw.githubusercontent.com/atingupta2005/adf-apr-21/main/2-azure-data-factory-parametrization/cars.csv
+3. Create linked service to connect to storage account - (lsStorage)
+4. Create linked service to connect to sql server - (lsSQL)
+5. Add dataset to connect to sql table - (outTable)
+6. Create dblob dataset to connect to cars.csv	- (inputCSV)
+7. Create pipeline
+8. Add copy data activity to the pipeline
+9. Configure copy data activity
+10. Run pipeline
+11. Verify data is there in the cars table
 ```
 select * from [dbo].[Cars]
 ```
@@ -61,14 +62,15 @@ fileName
 tableName
 ```
 1. Upload planes.csv to storage account\input container
-1. Use parameter in the connection tab
-1. Now add parameters to the pipeline itself
-1. Use those parameters in copy data activity
-1. Now while running pipeline, it will ask the inputs
-1. Add trigger to pipeline
-1. Publish pipeline
-1. Run pipeline using trigger
-1. Monitor pipeline execution in Monitor tab
+    - https://raw.githubusercontent.com/atingupta2005/adf-apr-21/main/2-azure-data-factory-parametrization/planes.csv
+3. Use parameter in the connection tab
+4. Now add parameters to the pipeline itself
+5. Use those parameters in copy data activity
+6. Now while running pipeline, it will ask the inputs
+7. Add trigger to pipeline
+8. Publish pipeline
+9. Run pipeline using trigger
+10. Monitor pipeline execution in Monitor tab
 
 
 ## 3-azure-data-factory-mapping-data-flows (data-flows branch)
