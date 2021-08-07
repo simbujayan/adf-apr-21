@@ -1,0 +1,12 @@
+{
+	"name": "TableList",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "lsSql",
+			"type": "LinkedServiceReference"
+		},
+		"annotations": [],
+		"type": "AzureSqlTable",
+		"schema": []
+	}
+}
