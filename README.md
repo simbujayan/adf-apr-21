@@ -191,17 +191,20 @@ Name: triggerEvents
 
 ## 7-Filter Activity (Filter_if_append branch):
 1. Create/Update Linked Service
+```
+Username: vmwinadf.centralus.cloudapp.azure.com\atingupta2005
+```
 1. Create a new dataset to refer to the output folder in storage account (dsOutFolderSA)
 1. In previous pipeline add a filter activity after Get Metadata and remove for each
-2. Add dynamic content and put below expression:
+1. Add dynamic content and put below expression:
 	@activity('Get Metadata1').output.childitems
-2. Add a file on the VM where Self Hosted IR is setup. File name should start with - cars
-3. Add a filter condition
+1. Add a file on the VM where Self Hosted IR is setup. File name should start with - cars
+1. Add a filter condition
 	@startswith(item().name, 'c')
-4. Debug pipeline and see the JSON output of the activities
-5. Add For each loop and configure
+1. Debug pipeline and see the JSON output of the activities
+1. Add For each loop and configure
 	@activity('Filter1').output.Value
-6. Now go into For Each activity and create Copy Data activity
+1. Now go into For Each activity and create Copy Data activity
 	Source: dsFolderIn, Wildcard Path, @item().name
 	Sink: dsOutFolderSA
 	
