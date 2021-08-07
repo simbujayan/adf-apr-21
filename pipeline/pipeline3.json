@@ -89,7 +89,7 @@
 										"type": "FileServerReadSettings",
 										"recursive": true,
 										"wildcardFileName": {
-											"value": "@variables('fileName')",
+											"value": "@item().name",
 											"type": "Expression"
 										},
 										"enablePartitionDiscovery": false
