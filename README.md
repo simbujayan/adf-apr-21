@@ -157,7 +157,37 @@ Password: <Password of VM>
 1. Debug pipeline and verify the output
 
 ## 6-Storage Events Trigger (6-storage-events-trigger branch)
-- Pending instructions
+- Create Azure Data Lake named - adldatafactoryaug21
+- Create Linked Service to connect to Azure Data Lake - lsInput_adls
+- Create Linked Service to connect to Azure SQL Server - lsout_sql
+- Create container - input
+- Upload CSV files (cars.csv, movies.csv, planes.csv) to container - input
+- Create Dataset inputCSV
+- Add parameters to dataset
+- Create Dataset outSQL
+- Add parameters to dataset
+- Add parameters to pipeline and use those in pipeline
+- Add copy activity in the pipeline
+- Add pipeline parameters in Copy Activity
+- For sink tab in Copy activity, use below formula
+- Register Event Grid in Subscription\Resource Providers (If needed). Its needed as we are now using Storage Events to trigger our pipeline
+```
+@replace(toUpper(pipeline().parameters.fileName), '.CSV', '')
+```
+- Create an event trigger
+```
+Type: Storage events
+Name: triggerEvents
+```
+- Formula to capture file name
+```
+@triggerBody().fileName
+```
+- Create Merge request to merge with branch - main_publish
+- Switch to branch - main_publish
+- Click Publish
+- Upload files to the container
+- Notice the pipeline is executed on file upload event
 
 ## 7-Filter Activity (Filter_if_append branch):
 1. Create/Update Linked Service
