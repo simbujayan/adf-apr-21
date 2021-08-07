@@ -87,12 +87,11 @@
 									"type": "DelimitedTextSource",
 									"storeSettings": {
 										"type": "FileServerReadSettings",
-										"recursive": true,
-										"enablePartitionDiscovery": false,
-										"fileFilter": {
-											"value": "@{variables('fileName')}",
+										"fileListPath": {
+											"value": "@variables('fileName')",
 											"type": "Expression"
-										}
+										},
+										"enablePartitionDiscovery": false
 									},
 									"formatSettings": {
 										"type": "DelimitedTextReadSettings"
