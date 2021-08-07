@@ -28,9 +28,9 @@
 					},
 					"sink": {
 						"type": "AzureSqlSink",
-						"writeBehavior": "insert",
 						"tableOption": "autoCreate",
-						"disableMetricsCollection": false
+						"disableMetricsCollection": false,
+						"writeBehavior": "insert"
 					},
 					"enableStaging": false,
 					"translator": {
@@ -60,7 +60,7 @@
 						"type": "DatasetReference",
 						"parameters": {
 							"tableName": {
-								"value": "@pipeline().parameters.fileName",
+								"value": "@replace(toUpper(pipeline().parameters.fileName), '.CSV', '')",
 								"type": "Expression"
 							}
 						}
