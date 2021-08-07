@@ -60,7 +60,7 @@
 						"type": "DatasetReference",
 						"parameters": {
 							"tableName": {
-								"value": "replace(@toUpper(pipeline().parameters.fileName), '.CSV', '')",
+								"value": "@replace(toUpper(pipeline().parameters.fileName), '.CSV', '')",
 								"type": "Expression"
 							}
 						}
