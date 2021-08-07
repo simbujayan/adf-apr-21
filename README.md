@@ -329,7 +329,7 @@ Name: dbatinapr21
 ```
 title
 ```
-- Create a Variable named - "Email Body"
+- Create a Variable\\Initialize named - "Email Body"
 - Put below content (Replace placeholder with dynamic content)
 ```
 <hr/>
@@ -343,7 +343,7 @@ Time: <b>____time_here____</b><br/>
 Information<br/>
 <p style='color:____color_here____'>____message_here____</p>
 <hr/>
-<p style='color:gray;'>This email was generated automatically. Please do not respond to it. Contact team at: contact@contoso.com </p>
+<p style='color:gray;'>This email was generated automatically. Please do not respond to it. Contact team at: atin@atin.com </p>
 ```
 - Specify Body - Dynamic Content and specify variable - "Email Body" we created earlier
 - Save Logic App
@@ -358,6 +358,7 @@ Invoked Pipeline: DEMO-PIPELINE
 - Connect it with Success output from previous activity - Execute Pipeline
 - Customize Activity - Send Success Email
 - URL: Logic APP URL
+- Method: Post
 - Body
 ```
 {
@@ -371,6 +372,7 @@ Invoked Pipeline: DEMO-PIPELINE
 }
 ```
 - Add another activity - Web - Name: Send Failure Email
+- Add Failure output to activity - Execute Pipeline
 - Connect it with Failure output from previous activity - Execute Pipeline
 - Customize Activity - Send Failure Email
 - URL: Logic APP URL
