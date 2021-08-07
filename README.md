@@ -212,23 +212,21 @@ Username: vmwinadf.centralus.cloudapp.azure.com\atingupta2005
 - Refer: pipeline3
 
 ## 8-Copy multiple tables in Bulk with Lookup & ForEach
-- Create Storage account
+- Create Storage account (If required)
 ```
-Name: adflookupdemostorage
+Name: sadfaug21
 ```
-- Create Container
+- Create Container (If required)
 ```
 Name: exported-data
 ```
-- Create SQL Database
+- Create SQL Database (If required)
 ```
-Name: adflookupdemo
+Name: dbatinapr21
 ```
 - Login to SQL Database
-- Create table using the script
-```
-Script Name: 
-```
+- Create table using the script (If required)
+   - https://raw.githubusercontent.com/atingupta2005/adf-apr-21/main/8-Copy-multiple-tables-in-Bulk-with-Lookup-ForEach/00-create-sample-database.sql.txt
 - These tables will be created
    - dbo.Cars
    - dbo.Countries
@@ -237,18 +235,18 @@ Script Name:
    - List Tables with Lookup
       - Create SQL Linked Service
       - Create Dataset to List Tables named - TableList
-      ```
-      SELECT * FROM adflookupdemo.INFORMATION_SCHEMA.TABLES WHERE TABLE_TYPE = 'BASE TABLE'
-      ```
    - Create Pipeline
    - Create activity in Pipeline - Lookup. Name it - ListTables
       - Settings Tab
          - Select DataSource
          - Change to Query radio button
          - Paste below query
-	 ```
-	 SELECT * FROM adflookupdemo.INFORMATION_SCHEMA.TABLES WHERE TABLE_TYPE = 'BASE TABLE'
-	 ```
+```
+SELECT * FROM
+<database_name>.INFORMATION_SCHEMA.TABLES
+WHERE table_type = 'BASE TABLE'
+```
+
 	 - Deselect Checkbox - First Row Only
 	 - Click - Preview Data
     - Create activity in Pipeline - ForEach and connect with previous activity
@@ -258,12 +256,12 @@ Script Name:
 	      @activity('List Tables').output.value
 	      ```
     - Create New LinkedService to Azure Blob Storage to export output
-    - Create Dataset for input
+    - Create Dataset for input - SQLTable
     ```
     Type: Azure SQL
-    Name: SQL Table
+    Name: SQLTable
     ```
-    - Specify Parameters of Dataset - SQL Table
+    - Create Parameters of Dataset - SQLTable
     ```
     TableName
     SchemaName
@@ -293,7 +291,7 @@ Script Name:
    Name: Export Table
    ```
    - Configure Source of Copy Activity
-      - Select Source Dataset
+      - Select Source Dataset - SQLTable
       - TableName
       ```
       @item().table_name
