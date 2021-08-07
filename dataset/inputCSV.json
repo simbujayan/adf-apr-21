@@ -1,10 +1,6 @@
 {
 	"name": "inputCSV",
 	"properties": {
-		"linkedServiceName": {
-			"referenceName": "lsStorage",
-			"type": "LinkedServiceReference"
-		},
 		"annotations": [],
 		"type": "DelimitedText",
 		"typeProperties": {
