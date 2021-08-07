@@ -6,11 +6,11 @@
 		"type": "FileServer",
 		"typeProperties": {
 			"host": "c:\\ir",
-			"userId": "dsvmApr21\\atingupta2005",
-			"encryptedCredential": "eyJDcmVkZW50aWFsSWQiOiI4YWM5M2U2NC1lMGI4LTRhZDEtOTBlMy0zYmQ2M2FhZTUyZTIiLCJWZXJzaW9uIjoiMi4wIiwiQ2xhc3NUeXBlIjoiTWljcm9zb2Z0LkRhdGFQcm94eS5Db3JlLkludGVyU2VydmljZURhdGFDb250cmFjdC5DcmVkZW50aWFsU1UwNkNZMTQifQ=="
+			"userId": "vmwinadf.centralus.cloudapp.azure.com\\atingupta2005",
+			"encryptedCredential": "eyJDcmVkZW50aWFsSWQiOiJiN2IyMWE5NS1mMTJlLTQ0ZjAtODk1Mi03ZTY1ODM5ZDRhYzUiLCJWZXJzaW9uIjoiMi4wIiwiQ2xhc3NUeXBlIjoiTWljcm9zb2Z0LkRhdGFQcm94eS5Db3JlLkludGVyU2VydmljZURhdGFDb250cmFjdC5DcmVkZW50aWFsU1UwNkNZMTQifQ=="
 		},
 		"connectVia": {
-			"referenceName": "selfHostedIR",
+			"referenceName": "irselfHosted",
 			"type": "IntegrationRuntimeReference"
 		}
 	}
