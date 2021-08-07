@@ -113,7 +113,7 @@ toString(left(title, length(title)-6))
 1. Download and install on VM
 ```
 https://www.microsoft.com/en-us/download/details.aspx?id=39717
-Version: 5.4
+Setup File Name: IntegrationRuntime_5.8.7872.1.msi
 ```
 1. Register by specifying the key
 1. Verify the connection status in Portal
