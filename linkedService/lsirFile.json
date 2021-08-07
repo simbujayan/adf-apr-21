@@ -6,8 +6,8 @@
 		"type": "FileServer",
 		"typeProperties": {
 			"host": "c:\\ir",
-			"userId": "vmvisualstudioatinjuly.eastus.cloudapp.azure.com\\atingupta2005",
-			"encryptedCredential": "eyJDcmVkZW50aWFsSWQiOiJjNWY1MDdjZC1hZGU5LTQwMjYtODljMi04ZWFmMzUxZTQwZTgiLCJWZXJzaW9uIjoiMi4wIiwiQ2xhc3NUeXBlIjoiTWljcm9zb2Z0LkRhdGFQcm94eS5Db3JlLkludGVyU2VydmljZURhdGFDb250cmFjdC5DcmVkZW50aWFsU1UwNkNZMTQifQ=="
+			"userId": "vmwinadf.centralus.cloudapp.azure.com\\atingupta2005",
+			"encryptedCredential": "eyJDcmVkZW50aWFsSWQiOiI3ZDI4YTExMC0wYjg5LTRhNWYtYWZkMS1mNjgyMzJiZTE5OGEiLCJWZXJzaW9uIjoiMi4wIiwiQ2xhc3NUeXBlIjoiTWljcm9zb2Z0LkRhdGFQcm94eS5Db3JlLkludGVyU2VydmljZURhdGFDb250cmFjdC5DcmVkZW50aWFsU1UwNkNZMTQifQ=="
 		},
 		"connectVia": {
 			"referenceName": "integrationRuntime1",
