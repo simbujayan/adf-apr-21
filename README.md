@@ -76,18 +76,19 @@ tableName
 ## 3-azure-data-factory-mapping-data-flows (data-flows branch)
 1. Create another container in storage account - output
 1. Upload movies.csv to input
-1. Create/update linked services
-1. Create dataset to input\movies.csv (dsInMovies)
-1. Create dataset to output\ (dsOutMovies)
+   - https://raw.githubusercontent.com/atingupta2005/adf-apr-21/main/3-azure-data-factory-mapping-data-flows/movies.csv
+3. Create/update linked services
+4. Create dataset to input\movies.csv (dsInMovies)
+5. Create dataset to output\ (dsOutMovies)
 	- Select first row as header
 	- Disable import schema
-1. Create a Data Flow resource
-1. Add Source -> dsInMovies dataset
-1. Enable Data flow debug
-1. Wait for 5-10 min
-1. Select step and open tab Data Preview
-1. Add new step - Derived Column. Name it - YearTitleExtraction
-1. Enter column Name (Year) and Add expression to it
+6. Create a Data Flow resource
+7. Add Source -> dsInMovies dataset
+8. Enable Data flow debug
+9. Wait for 5-10 min
+10. Select step and open tab Data Preview
+11. Add new step - Derived Column. Name it - YearTitleExtraction
+12. Enter column Name (Year) and Add expression to it
 ```
 toInteger(trim(right(title, 6), '()'))
 ```
