@@ -6,8 +6,8 @@
 		"type": "FileServer",
 		"typeProperties": {
 			"host": "c:\\ir",
-			"userId": "dsvmApr21\\atingupta2005",
-			"encryptedCredential": "eyJDcmVkZW50aWFsSWQiOiJjYmY4ZmM5MS0xMTI4LTRiMDQtYTFhYy01MmY4MjVkZjA4MjkiLCJWZXJzaW9uIjoiMi4wIiwiQ2xhc3NUeXBlIjoiTWljcm9zb2Z0LkRhdGFQcm94eS5Db3JlLkludGVyU2VydmljZURhdGFDb250cmFjdC5DcmVkZW50aWFsU1UwNkNZMTQifQ=="
+			"userId": "vmwinadf\\atingupta2005",
+			"encryptedCredential": "eyJDcmVkZW50aWFsSWQiOiJhYmFiNjVlOC1hZWU3LTQ5NDctOTBhMy01NTAxZDJhYzU0YjYiLCJWZXJzaW9uIjoiMi4wIiwiQ2xhc3NUeXBlIjoiTWljcm9zb2Z0LkRhdGFQcm94eS5Db3JlLkludGVyU2VydmljZURhdGFDb250cmFjdC5DcmVkZW50aWFsU1UwNkNZMTQifQ=="
 		},
 		"connectVia": {
 			"referenceName": "irSelfHosted",
