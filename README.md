@@ -125,7 +125,7 @@ C:\ir
 ```
 Integration Runtime: Self Hosted
 Host: C:\ir
-Username: dsvmaug21\atingupta2005
+Username: vmwinadf.centralus.cloudapp.azure.com\atingupta2005
 Password: <Password of VM>
 ```
 1. Put a cars.csv in C:\ir
