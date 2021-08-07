@@ -241,11 +241,11 @@ Name: dbatinapr21
          - Select DataSource
          - Change to Query radio button
          - Paste below query
-```
-SELECT * FROM
-<database_name>.INFORMATION_SCHEMA.TABLES
-WHERE table_type = 'BASE TABLE'
-```
+		```
+		SELECT * FROM
+		<database_name>.INFORMATION_SCHEMA.TABLES
+		WHERE table_type = 'BASE TABLE'
+		```
 
 	 - Deselect Checkbox - First Row Only
 	 - Click - Preview Data
@@ -257,15 +257,15 @@ WHERE table_type = 'BASE TABLE'
 	      ```
     - Create New LinkedService to Azure Blob Storage to export output
     - Create Dataset for input - SQLTable
-    ```
-    Type: Azure SQL
-    Name: SQLTable
-    ```
+	    ```
+	    Type: Azure SQL
+	    Name: SQLTable
+	    ```
     - Create Parameters of Dataset - SQLTable
-    ```
-    TableName
-    SchemaName
-    ```
+	    ```
+	    TableName
+	    SchemaName
+	    ```
 
     - User TableName parameter inside tab - Connection
        - Enable Edit Checkbox
