@@ -33,6 +33,12 @@
 				"type": "decimal",
 				"precision": 18,
 				"scale": 0
+			},
+			{
+				"name": "InsertDateTime",
+				"type": "datetime",
+				"precision": 23,
+				"scale": 3
 			}
 		],
 		"typeProperties": {

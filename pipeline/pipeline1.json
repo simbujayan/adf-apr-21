@@ -95,15 +95,6 @@
 					},
 					"sink": {
 						"type": "AzureSqlSink",
-						"sqlWriterStoredProcedureName": "[dbo].[spSetWatermark]",
-						"storedProcedureParameters": {
-							"NewTime": {
-								"type": "DateTime"
-							},
-							"TableName": {
-								"type": "String"
-							}
-						},
 						"disableMetricsCollection": false
 					},
 					"enableStaging": false,
