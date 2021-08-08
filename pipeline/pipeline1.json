@@ -27,17 +27,11 @@
 						}
 					},
 					"sink": {
-						"type": "AzureSqlSink"
+						"type": "CosmosDbSqlApiSink",
+						"writeBehavior": "upsert",
+						"disableMetricsCollection": false
 					},
-					"enableStaging": false,
-					"translator": {
-						"type": "TabularTranslator",
-						"typeConversion": true,
-						"typeConversionSettings": {
-							"allowDataTruncation": true,
-							"treatBooleanAsNumber": false
-						}
-					}
+					"enableStaging": false
 				},
 				"inputs": [
 					{
@@ -53,14 +47,8 @@
 				],
 				"outputs": [
 					{
-						"referenceName": "outTable",
-						"type": "DatasetReference",
-						"parameters": {
-							"tableName": {
-								"value": "@pipeline().parameters.tableName",
-								"type": "Expression"
-							}
-						}
+						"referenceName": "dsCosmos",
+						"type": "DatasetReference"
 					}
 				]
 			}
