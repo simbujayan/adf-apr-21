@@ -406,7 +406,7 @@ Invoked Pipeline: DEMO-PIPELINE
 1. Trigger logic app and confirm if data factory pipeline is executed
 
 
-## 11-Incremental Load of Data from SourceDB to TargetDB
+## 11-Incremental Load of Data from SourceDB to TargetDB (10-Incrementally-Load-Data)
 - Create Cars table in Source and Target databases
 ```
 CREATE TABLE Cars (
@@ -420,6 +420,10 @@ CREATE TABLE Cars (
 ```
 ```
 ALTER TABLE [dbo].[Cars] ADD InsertDateTime datetime
+```
+```
+update [dbo].[Cars] 
+set InsertDateTime = GETDATE()
 ```
 - Create watermark table in target database
 ```
@@ -511,6 +515,32 @@ Stored Procedure Name: dbo.spSetWatermark
 - Debug pipeline
 - Notice data has been shifted to target table
 - Insert few records to the Source table Cars
+```
+Insert Into [dbo].[Cars] 
+Values ('Acura', 'MDX', 'SUV', 'Asia', 'All', 4451, GETDATE() )
+```
 - Run pipeline again and notice only increamental changes are added to the target
 
 
+## 12-ComosDB Integration (11-ComosDB-Integration)
+- Create Azure Cosmos DB -> SQL API
+- Create container in Database - Cars
+- Create Linked Service - lsCosmos
+- Create Linked Service - lsStorage
+- Create Dataset - dsCosmos
+- Create Dataset - inputCSV
+- Create Pipeline and add Copy Data Activity to it
+- Configure Source and target
+- Debug Pipeline
+- Refresh Cosmos DB Data to inspect the updates
+
+## 13-Databricks Integration
+- Create Databricks notebook - myFirstNotebook
+- Generate an access token in Azure Databricks
+- Create Pipeline and add activity - Notebook
+- Configure activity to connect to the notebook created in Databricks
+- Create a linked service to - 'Azure Databricks'
+- Specify Notebook Path
+- Specify Parameters to pass to notebook
+- Debug pipeline
+- Inspect the activity output and click URL to inspect output of Notebook Job execution
