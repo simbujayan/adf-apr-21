@@ -405,9 +405,22 @@ Invoked Pipeline: DEMO-PIPELINE
 ```
 1. Trigger logic app and confirm if data factory pipeline is executed
 
-	
+
 ## 11-Incremental Load of Data from SourceDB to TargetDB
 - Create Cars table in Source and Target databases
+```
+CREATE TABLE Cars (
+	Make nvarchar(100),
+	Model nvarchar(200),
+	Type nvarchar(100),
+	Origin nvarchar(100),
+	DriveTrain nvarchar(100),
+	Length decimal(18,0)
+)
+```
+```
+ALTER TABLE [dbo].[Cars] ADD InsertDateTime datetime
+```
 - Create watermark table in target database
 ```
 Create Table dbo.watermarktable
