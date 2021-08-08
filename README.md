@@ -389,3 +389,18 @@ Invoked Pipeline: DEMO-PIPELINE
  }
 ```
 - Delete cars.csv from input containter and run the pipeline again. It will send failure email
+
+
+## 10-Trigger Data Factory Pipeline from Azure Logic App
+1. Open ADF
+1. Select Branch -> 2-parametrization branch
+1. Publish it by creating a Pull Request and then Publish the branch - main_publish
+1. Create a new Logic App
+1. Trigger - Schedule or HTTP
+1. Add action - Azure Data Factory \\ Create a Pipeline Run
+1. Specify details of pipeline to execute
+1. Specify Parameter:
+```
+{"fileName": "cars.csv", "tableName": "Cars"}
+```
+1. Trigger logic app and confirm if data factory pipeline is executed
