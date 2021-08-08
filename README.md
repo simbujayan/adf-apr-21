@@ -460,7 +460,7 @@ TableName: Cars
    User query: Query
    ```
    ```
-   SELCT max(InsertDateTime) AS NewWaterMarkValue FROM dbo.Cars
+   SELECT max(InsertDateTime) AS NewWaterMarkValue FROM dbo.Cars
    ```
 - Debug the pipeline and inspect the output of each activity
 - Add Copy Data activity and send output of both lookup activities to Copy Data activity
