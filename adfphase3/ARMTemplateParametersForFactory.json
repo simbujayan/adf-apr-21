@@ -5,20 +5,11 @@
 		"factoryName": {
 			"value": "adfphase3"
 		},
-		"lsInput_adls_accountKey": {
+		"lsSQL_connectionString": {
 			"value": ""
 		},
-		"lsout_sql_connectionString": {
+		"lsStorage_connectionString": {
 			"value": ""
-		},
-		"lsInput_adls_properties_typeProperties_url": {
-			"value": "https://adldatafactoryaug21.dfs.core.windows.net"
-		},
-		"triggerEvents_properties_pipeline1_parameters_fileName": {
-			"value": "@triggerBody().fileName"
-		},
-		"triggerEvents_properties_typeProperties_scope": {
-			"value": "/subscriptions/ac3087af-3d43-44ac-98bf-346733764b1d/resourceGroups/rgphase3/providers/Microsoft.Storage/storageAccounts/adldatafactoryaug21"
 		}
 	}
 }

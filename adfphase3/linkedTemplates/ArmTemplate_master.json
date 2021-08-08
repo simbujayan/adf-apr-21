@@ -7,25 +7,13 @@
 			"metadata": "Data Factory name",
 			"defaultValue": "adfphase3"
 		},
-		"lsInput_adls_accountKey": {
+		"lsSQL_connectionString": {
 			"type": "secureString",
-			"metadata": "Secure string for 'accountKey' of 'lsInput_adls'"
+			"metadata": "Secure string for 'connectionString' of 'lsSQL'"
 		},
-		"lsout_sql_connectionString": {
+		"lsStorage_connectionString": {
 			"type": "secureString",
-			"metadata": "Secure string for 'connectionString' of 'lsout_sql'"
-		},
-		"lsInput_adls_properties_typeProperties_url": {
-			"type": "string",
-			"defaultValue": "https://adldatafactoryaug21.dfs.core.windows.net"
-		},
-		"triggerEvents_properties_pipeline1_parameters_fileName": {
-			"type": "string",
-			"defaultValue": "@triggerBody().fileName"
-		},
-		"triggerEvents_properties_typeProperties_scope": {
-			"type": "string",
-			"defaultValue": "/subscriptions/ac3087af-3d43-44ac-98bf-346733764b1d/resourceGroups/rgphase3/providers/Microsoft.Storage/storageAccounts/adldatafactoryaug21"
+			"metadata": "Secure string for 'connectionString' of 'lsStorage'"
 		},
 		"containerUri": {
 			"type": "string",
@@ -54,20 +42,11 @@
 					"factoryName": {
 						"value": "[parameters('factoryName')]"
 					},
-					"lsInput_adls_accountKey": {
-						"value": "[parameters('lsInput_adls_accountKey')]"
+					"lsSQL_connectionString": {
+						"value": "[parameters('lsSQL_connectionString')]"
 					},
-					"lsout_sql_connectionString": {
-						"value": "[parameters('lsout_sql_connectionString')]"
-					},
-					"lsInput_adls_properties_typeProperties_url": {
-						"value": "[parameters('lsInput_adls_properties_typeProperties_url')]"
-					},
-					"triggerEvents_properties_pipeline1_parameters_fileName": {
-						"value": "[parameters('triggerEvents_properties_pipeline1_parameters_fileName')]"
-					},
-					"triggerEvents_properties_typeProperties_scope": {
-						"value": "[parameters('triggerEvents_properties_typeProperties_scope')]"
+					"lsStorage_connectionString": {
+						"value": "[parameters('lsStorage_connectionString')]"
 					}
 				}
 			},
