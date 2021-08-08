@@ -535,12 +535,25 @@ Values ('Acura', 'MDX', 'SUV', 'Asia', 'All', 4451, GETDATE() )
 - Refresh Cosmos DB Data to inspect the updates
 
 ## 13-Databricks Integration
-- Create Databricks notebook - myFirstNotebook
+- Create Databricks Python Notebook - myFirstNotebook
+- Use below code:
+```
+# Creating widgets for leveraging parameters, and printing the parameters
+
+dbutils.widgets.text("input", "","")
+y = dbutils.widgets.get("input")
+print ("Param -\'input':")
+print (y)
+```
 - Generate an access token in Azure Databricks
 - Create Pipeline and add activity - Notebook
 - Configure activity to connect to the notebook created in Databricks
 - Create a linked service to - 'Azure Databricks'
 - Specify Notebook Path
 - Specify Parameters to pass to notebook
+```
+Name: input
+Value: Atin
+```
 - Debug pipeline
 - Inspect the activity output and click URL to inspect output of Notebook Job execution
