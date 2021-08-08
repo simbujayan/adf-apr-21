@@ -404,3 +404,100 @@ Invoked Pipeline: DEMO-PIPELINE
 {"fileName": "cars.csv", "tableName": "Cars"}
 ```
 1. Trigger logic app and confirm if data factory pipeline is executed
+
+	
+## 11-Incremental Load of Data from SourceDB to TargetDB
+- Create Cars table in Source and Target databases
+- Create watermark table in target database
+```
+Create Table dbo.watermarktable
+(
+tableName varchar(255),
+WaterMarkValue datetime
+);
+Insert into watermarktable
+VALUES ('Cars', '1900-01-01');
+GO
+CREATE PROCEDURE spSetWatermark @TableName varchar(50), @NewTime datetime
+AS
+BEGIN
+   UPDATE watermarktable
+   SET [WaterMarkValue] = @NewTime
+WHERE [TableName] = @TableName
+END
+```
+- Create Linked Service to Source Database - lsSource
+- Create Linked Service to Target Database - lsTarget
+- Create dataset for Source
+```
+Name: ds_CarsSource
+TableName: Cars
+```
+- Create dataset for Target watermark
+```
+Name: ds_watermarktable
+TableName: watermarktable
+```
+- Create dataset for Target
+```
+Name: ds_CarsTarget
+TableName: Cars
+```
+- Create Pipeline
+- Add Lookup activity named - lkpOldWaterMarkValue
+   - Configure Settings
+    ```
+    Source dataset: ds_watermarktable
+    User query: Query
+    ```
+    ```
+    Select TableName, WaterMarkValue From dbo.watermarktable WHERE TableName = 'Cars'
+    ```
+- Add Lookup activity named - lkpNewWaterMarkValue
+  - Configure Settings
+   ```
+   Source dataset: ds_CarsSource
+   User query: Query
+   ```
+   ```
+   SELCT max(InsertDateTime) AS NewWaterMarkValue FROM dbo.Cars
+   ```
+- Debug the pipeline and inspect the output of each activity
+- Add Copy Data activity and send output of both lookup activities to Copy Data activity
+- Configure Source
+```
+Source dataset: ds_CarsSource
+Use query: Query
+```
+- Add dynamic content for query
+```
+SELECT * From dbo.Cars Where InsertDateTime > '@{activity('lkpOldWaterMarkValue').output.firstRow.WaterMarkValue}' AND 
+InsertDateTime <= '@{activity('lkpNewWaterMarkValue').output.firstRow.NewWaterMarkValue}'
+```
+- Configure Sink
+```
+Sink dataset: ds_CarsTarget
+```
+- Import Schema by just providing some dummy data
+- Notice mapping is done successfully
+- Add activity - Stored Procedure
+- Configure Settings
+```
+LinkedService: lsTarget
+Stored Procedure Name: dbo.spSetWatermark
+```
+- Click Import to import the input parameters of the stored procedure
+- Add dynamic content to NewTime value
+```
+@activity('lkpNewWaterMarkValue').output.firstRow.NewWatermarkValue
+```
+- Add dynamic content to TableName value
+```
+@activity('lkpOldWaterMarkValue').output.firstRow.TableName
+```
+- Debug pipeline
+- Notice data has been shifted to target table
+- Insert few records to the Source table Cars
+- Run pipeline again and notice only increamental changes are added to the target
+
+
