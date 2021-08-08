@@ -17,7 +17,7 @@
 				"typeProperties": {
 					"notebookPath": "/Users/atin.intellipaat@gmail.com/myFirstNotebook",
 					"baseParameters": {
-						"Name": "Atin"
+						"input": "Atin"
 					}
 				},
 				"linkedServiceName": {
