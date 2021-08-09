@@ -557,3 +557,17 @@ Value: Atin
 ```
 - Debug pipeline
 - Inspect the activity output and click URL to inspect output of Notebook Job execution
+
+## 14-SSIS integration runtime
+- Download and install SQL Server 2017 x86
+- Download and install Visual Studio with "Data storage and processing"
+- In Visual Studio, install extention - "SQL Server Integration Services Projects"
+- Create project in Visual Studio using template - "Integration Services Project"
+   - It extracts a text file named contacts.txt from the blob source and loads it into destination blog storage.
+- Create SSIS Integration Runtime in Azure Data Factory
+   - Select Create SSIS Catalog option to deploy packages in SSISDB, provide Azure SQL Database server endpoint, and the admin credentials to connect
+- Connect VS project to Azure
+- Deploy VS project to Azure
+- Create a new pipeline and add activity - "Execute SSIS Package"
+- Select SSIS Package in the settings of activity
+- Debug Pipeline
