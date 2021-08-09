@@ -573,3 +573,167 @@ Value: Atin
 - Create a new pipeline and add activity - "Execute SSIS Package"
 - Select SSIS Package in the settings of activity
 - Debug Pipeline
+
+## 13-Dynamic Pipelines-Incremental Copy of Multiple Tables
+- Refer Git Repo: 13-Dynamic-Pipelines-Incremental-Copy-of-Multiple-Tables
+- Open Azure SQL Database for Source - dbatinapr21 
+- Open Azure SQL Database for Target - dbTarget
+- Create 2 more tables (Planes and Movies) in Source and Target databases
+```
+CREATE TABLE [dbo].[Planes] (
+	ICAO nvarchar(200),
+	IATA nvarchar(200),
+	MAKER nvarchar(200),
+	DESCRIPTION nvarchar(200)
+)
+```
+```
+CREATE TABLE [dbo].[Movies] (
+	movieId nvarchar(200),
+	title nvarchar(200),
+	genres nvarchar(200)
+)
+```
+
+- Add InsertDateTime column in the tables in Source and Target databases
+```
+ALTER TABLE [dbo].[Planes] ADD InsertDateTime datetime
+
+```
+```
+ALTER TABLE [dbo].[Movies] ADD InsertDateTime datetime
+
+```
+
+- Set default value to the column - InsertDateTime
+```
+Update [dbo].[Planes]
+set InsertDateTime = GETDATE()
+```
+
+```
+Update [dbo].[Movies]
+set InsertDateTime = GETDATE()
+```
+
+- Open Target Database
+- Insert records in water marktable (as needed)
+```
+Insert into watermarktable
+VALUES ('Movies', '1900-01-01');
+```
+```
+Insert into watermarktable
+VALUES ('Planes', '1900-01-01');
+```
+```
+Insert into watermarktable
+VALUES ('Cars', '1900-01-01');
+```
+- Open Pipeline in ADF
+- Create 2 pipeline parameters
+```
+TableName
+WaterMarkColumn
+```
+- Change query of lkpOldWaterMarkValue
+```
+Select TableName, WaterMarkValue From dbo.watermarktable WHERE TableName = '@{pipeline().parameters.TableName}'
+```
+
+- Change query of lkpNewWaterMarkValue
+```
+SELECT max(@{pipeline().parameters.WaterMarkColumn}) AS NewWaterMarkValue FROM @{pipeline().parameters.TableName}
+```
+
+- Change query of activity - Copy Data
+```
+SELECT * From @{pipeline().parameters.TableName} Where @{pipeline().parameters.WaterMarkColumn} > '@{activity('lkpOldWaterMarkValue').output.firstRow.WaterMarkValue}' AND 
+@{pipeline().parameters.WaterMarkColumn} <= '@{activity('lkpNewWaterMarkValue').output.firstRow.NewWaterMarkValue}'
+```
+
+- Change the Sink section to get table name dynamically
+   - Add Parameters using Parameters tab
+   ```
+   TableName
+   ```
+   - Open tab - Connection
+   - Enable checkbox - Edit
+   - Add dynamic content of table name
+   ```
+   @pipeline().parameters.TableName
+   ```
+- Insert one record in each table and test the pipeline
+- In target database, create configuration table to make our pipeline dynamic
+```
+CREATE TABLE [dbo].[ConfigurationTable] (
+	TableName nvarchar(100) NULL,
+	WaterMarkColumn nvarchar(100) NULL
+) ON [PRIMARY]
+```
+- Insert records in ConfigurationTable
+```
+Insert INTO ConfigurationTable VALUES ('Cars', 'InsertDateTime')
+```
+```
+Insert INTO ConfigurationTable VALUES ('Movies', 'InsertDateTime')
+```
+```
+Insert INTO ConfigurationTable VALUES ('Planes', 'InsertDateTime')
+```
+
+- Create new pipeline - Master
+- Create a new Dataset to the table ConfigurationTable - dsConfigurationTable
+- Add activity - Lookup
+```
+Name: Lookup Config
+Source dataset: ConfigurationTable
+```
+- Uncheck - First Row Only
+- Preview Data to confirm connection
+- Add activity - ForEach
+```
+Name: ForEachConfigEntry
+Settings->Item: @activity('Lookup Config').output.value
+```
+- Go inside ForEach activities
+   - Add activity - Execute Pipeline
+   ```
+   Name: ExecuteIncrementalPipeline
+   Settings->Invoked Pipeline: <Chose Pipeline which is doing increamental copy>
+   ```   
+   - Specify parameters of the child pipeline
+   ```
+   TableName: @{item().TableName}
+   WaterMarkColumn: @{item().WaterMarkColumn}
+   ```
+- Debug Pipeline
+- Check records in the table of source and target database
+```
+Select * from Cars
+```
+```
+Select * from Planes
+```
+```
+Select * from Movies
+```
+- Run pipeline
+- Again check records in the table of source and target database
+- Insert new records and run the pipeline in multiple iterations
+   - Insert records
+   ```
+   Insert Into [dbo].[Cars] 
+   Values ('Acura', 'MDX', 'SUV', 'Asia', 'All', 4451, GETDATE() )
+   ```
+   ```
+   Insert Into [dbo].[Planes]
+   Values ('A318','318','Airbus','A318', GETDATE() )
+   ```
+   ```
+   Insert Into [dbo].[Movies]
+   Values ('1','Toy Story (1995)', 'Adventure|Animation|Children|Comedy|Fantasy', GETDATE() )
+   ```
+   - Run pipeline
+   - Check records in the table of source and target database
+   - Repeat above step again
