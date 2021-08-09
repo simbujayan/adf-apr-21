@@ -562,6 +562,8 @@ Value: Atin
 - Download and install SQL Server 2017 x86
 - Download and install Visual Studio with "Data storage and processing"
 - In Visual Studio, install extention - "SQL Server Integration Services Projects"
+- Install "SSIS Azure Feature Pack for SQL Server 2017" - SsisAzureFeaturePack_2017_x86.msi
+   - https://www.microsoft.com/en-us/download/details.aspx?id=54798
 - Create project in Visual Studio using template - "Integration Services Project"
    - It extracts a text file named contacts.txt from the blob source and loads it into destination blog storage.
 - Create SSIS Integration Runtime in Azure Data Factory
