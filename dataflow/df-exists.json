@@ -1,0 +1,31 @@
+{
+	"name": "df-exists",
+	"properties": {
+		"type": "MappingDataFlow",
+		"typeProperties": {
+			"sources": [
+				{
+					"dataset": {
+						"referenceName": "dsInputEmployees",
+						"type": "DatasetReference"
+					},
+					"name": "source1"
+				},
+				{
+					"dataset": {
+						"referenceName": "dsInputDepartments",
+						"type": "DatasetReference"
+					},
+					"name": "source2"
+				}
+			],
+			"sinks": [],
+			"transformations": [
+				{
+					"name": "Exists1"
+				}
+			],
+			"script": "source(output(\n\t\tEMPLOYEE_ID as string,\n\t\tFIRST_NAME as string,\n\t\tLAST_NAME as string,\n\t\tEMAIL as string,\n\t\tPHONE_NUMBER as string,\n\t\tHIRE_DATE as string,\n\t\tJOB_ID as string,\n\t\tSALARY as string,\n\t\tCOMMISSION_PCT as string,\n\t\tMANAGER_ID as string,\n\t\tDEPARTMENT_ID as string\n\t),\n\tallowSchemaDrift: true,\n\tvalidateSchema: false,\n\tignoreNoFilesFound: false) ~> source1\nsource(output(\n\t\tDEPARTMENT_ID as string,\n\t\tDEPARTMENT_NAME as string,\n\t\tMANAGER_ID as string,\n\t\tLOCATION_ID as string\n\t),\n\tallowSchemaDrift: true,\n\tvalidateSchema: false,\n\tignoreNoFilesFound: false) ~> source2\nsource1, source2 exists(source1@DEPARTMENT_ID == source2@DEPARTMENT_ID,\n\tnegate:false,\n\tpartitionBy('hash', 1),\n\tbroadcast: 'auto')~> Exists1"
+		}
+	}
+}
