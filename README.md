@@ -571,7 +571,7 @@ Value: Atin
 - Select SSIS Package in the settings of activity
 - Debug Pipeline
 
-## 13-Dynamic Pipelines-Incremental Copy of Multiple Tables
+## 15-Dynamic Pipelines-Incremental Copy of Multiple Tables
 - Refer Git Repo: 13-Dynamic-Pipelines-Incremental-Copy-of-Multiple-Tables
 - Open Azure SQL Database for Source - dbatinapr21 
 - Open Azure SQL Database for Target - dbTarget
@@ -736,7 +736,7 @@ Select * from Movies
    - Repeat above step again
 
 	
-## 14-Data Flow More examples (14-data-flows-more-examples branch)
+## 16-Data Flow More examples (14-data-flows-more-examples branch)
  - Refer to these data flow in Data Factory
 ```
 1-dfJoin
