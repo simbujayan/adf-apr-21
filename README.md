@@ -1,7 +1,4 @@
-# Azure Data Factory Tutorial
-
-- Ready Data Factory Pipelines
-   - https://github.com/atingupta2005/adf-apr-21.git
+# Azure Data Factory Training
 
 - Create a new Azure Data Factory resource in Azure and specify details of Github URL specified above while creating your Data Factory
 
@@ -737,3 +734,14 @@ Select * from Movies
    - Run pipeline
    - Check records in the table of source and target database
    - Repeat above step again
+
+	
+## 14-Data Flow More examples (14-data-flows-more-examples branch)
+ - Refer to these data flow in Data Factory
+```
+1-dfJoin
+2-df-exists
+3-df-conditional-split-employees
+4-df-employees-lookup-with-departments
+5-df-employees-group-by-lookup-select
+```
